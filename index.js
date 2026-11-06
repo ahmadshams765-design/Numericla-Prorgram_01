@@ -248,3 +248,33 @@ class RootSolver {
         this.printTable("Secant", table, x1);
     }
 }
+
+async function main() {
+    console.clear();
+    console.log("=======================================================");
+    console.log("   NUMERICAL ANALYSIS SOLVER (by Abdelrahman Ashraf)");
+    console.log("=======================================================");
+
+    while (true) {
+        console.log("\nWhat would you like to solve?");
+        console.log("1. Roots of Non-Linear Equation (f(x) = 0)");
+        console.log("2. System of Linear Equations (Ax = B)");
+        console.log("3. Interpolation / Curve Fitting");
+        console.log("4. Exit");
+        const choice = await ask("\nChoice: ");
+        if (choice.trim() === '1') {
+            await runRootFinder();
+        } else if (choice.trim() === '2') {
+            await runLinearSystem();
+        } else if (choice.trim() === '3') {
+            await runInterpolation();
+        } else if (choice.trim() === '4') {
+            rl.close();
+            process.exit(0);
+        } else {
+            console.log("Invalid selection.");
+        }
+    }
+}
+
+main();
